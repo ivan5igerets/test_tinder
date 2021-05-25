@@ -10,7 +10,6 @@
     </div>
 
     <div class="card-info card-info-size">
-
       <div class="card-info-name">
         {{ buyer.title }}
       </div>
@@ -18,9 +17,7 @@
       <div class="card-info-order">
         {{ buyer.text }}
       </div>
-
     </div>
-    
   </div>
 </template>
 
@@ -35,17 +32,13 @@ export default {
   },
 
   mounted() {
-    this.isShow = true,
-    console.log('buyer', this.buyer);
+    this.isShow = true
   }
 }
 </script>
 
 <style lang="scss">
-
-// @media screen and (min-width: 801px) {}
 .card {
-
   @media screen and (min-width: 801px) {
     &-size {
       height: 590px;
@@ -101,14 +94,12 @@ export default {
     color: #FFB903;
   }
 
-  // background: gold;
   box-shadow: 0px 0px 40px rgba(127, 127, 127, 0.4);
   border-radius: 48px;
   overflow: hidden;
   position: relative;
 
   &-photo {
-    // background: crimson;
   }
 
   img {
@@ -134,11 +125,8 @@ export default {
       display: flex;
       align-items: center;
       letter-spacing: 0.02em;
-      /* color: #FFFFFF; */
       text-align: justify;
     }
   }
-
-  
 }
 </style>

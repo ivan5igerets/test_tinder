@@ -1,54 +1,6 @@
 <template>
   <div class="page">
-    <!-- <div class="left-part">
-      <div class="left-part-top">
-
-        <div @click="goHome" class="small-circle">
-          <img src="../assets/btn_home.svg" alt="">
-        </div>
-
-        <div @click="restart" class="small-circle">
-          <img  class="icon-retry" src="../assets/btn_retry.svg" alt="">
-        </div>
-
-      </div>
-
-      <div class="left-part-body">
-
-        <div class="left-part-body-title">Парметры:</div>
-
-        <div class="container">
-
-          <div class="counter">
-            <img src="../assets/sad.svg" alt="">
-
-            <div class="counter-number"> {{ med_1 }} </div>
-          </div>
-        
-          <div class="counter">
-            <img src="../assets/Happy_icon.svg" alt="">
-
-            <div class="counter-number"> {{ med_2 }} </div>
-          </div>
-
-          <div class="counter">
-            <img src="../assets/heart_icon.svg" alt="">
-
-            <div class="counter-number"> {{ med_3 }} </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="left-part-bottom">
-        <div class="left-part-bottom-text">Осталось в очереди:</div>
-        <div class="left-part-bottom-text"> {{ curBuyerId + 1}} / {{ buyers.length }} </div>
-      </div>
-      
-    </div> -->
     <SideBar v-on:restart="restart" :curBuyerId="curBuyerId" />
-
 
     <div class="main-part main-part-width">
       <div class="main-part-body">
@@ -61,7 +13,6 @@
             />
           </transition>
         </div>
-        <!-- <div class="plug" v-if="!curBuyer"></div>  -->
       </div>
 
       <div class="main-part-footer">
@@ -96,8 +47,6 @@ export default {
   mounted() {
     this.curBuyerId = 0
     this.curBuyer = this.buyers[this.curBuyerId]
-
-    console.log(this.buyers);
   },
 
   methods: {
@@ -154,6 +103,7 @@ export default {
     ...mapState('buyers',{
       buyers: state => state.buyers
     }),
+
     ...mapState('sales', {
       med_1: state => state.med_1,
       med_2: state => state.med_2,
@@ -176,26 +126,24 @@ export default {
   opacity: 0;
 }
 
-.first-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+.first-leave-to  {
   opacity: 0;
   transform: translateX(-100%) rotate(-45deg);
 }
 
-.second-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+.second-leave-to {
   opacity: 0;
   transform: translateY(-100%) rotate(-30deg);
 }
-.third-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+.third-leave-to {
   opacity: 0;
   transform: translateX(100%) rotate(45deg);
 }
-
 
 .plug {
   height: 590px;
   width: 540px;
   opacity: 1;
-  // background: darkorchid;
 }
 
 .page {
@@ -203,7 +151,6 @@ export default {
   height: 100vh;
   display: flex;
   position: relative;
-  // background: cornflowerblue;
 }
 
 
@@ -220,14 +167,11 @@ export default {
       margin: 15px auto;
     }
   }
-  // background: forestgreen;
-  // margin-left: 470px;
-  // width: calc(100% - 470px);
+  
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // overflow: hidden;
 
   &-body {
     display: flex;
@@ -235,8 +179,6 @@ export default {
   }
 
   &-footer {
-    // height: 160px;
-    // background: lightcoral;
     margin-bottom: 55px;
 
     .medicine {

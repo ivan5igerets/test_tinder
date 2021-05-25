@@ -10,7 +10,6 @@
       </div>
 
       <div class="result">
-
         <div class="result-top-part">
           <div class="medicine">
             <div class="medicine-percents"> {{calculateInterest(med_1)}} %</div>
@@ -39,7 +38,6 @@
             Это тестовое задание, так что не будем углубляться в глубины проблем фармацевтов. 
           </div>
         </div>
-
       </div>
 
       <div class="bottom">
@@ -107,18 +105,14 @@ export default {
 
   .adaptive-right {
     display: none;
-    // width: calc(100%);
   }
 }
 
 .page {
-  // background: olivedrab;
   position: relative;
   display: flex;
   justify-content: space-between;
   min-height: 100vh;
-  // width: 100px;
-  // height: 100px;
 }
 
 .left-part {
@@ -190,7 +184,6 @@ export default {
         text-align: left;
         margin-left: 50px;
         margin-top: 50px;
-        // border: 1px solid #8E9AD5;
 
         .bolder {
           font-size: 45px;
@@ -210,7 +203,6 @@ export default {
   }
 
   .bottom {
-    // background: lightcoral;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -220,16 +212,12 @@ export default {
     .try-agein {
       width: 270px;
       height: 60px;
-      // background: lightskyblue;
       border-radius: 30px;
       border: none;
       outline: none;
       font-family: Avenir Next Cyr;
       font-size: 24px;
       line-height: 29px;
-      /* display: flex; */
-      /* align-items: center; */
-      /* text-align: center; */
       color: #FFFFFF;
       background: linear-gradient(90deg, #D9D9D9 0%, #A1A1A1 100%);
 

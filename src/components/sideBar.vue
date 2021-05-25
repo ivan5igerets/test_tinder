@@ -11,33 +11,27 @@
       </div>
     </div>
 
-      <div class="side-bar-body">
+    <div class="side-bar-body">
 
-        <div class="side-bar-body-title">Парметры:</div>
+      <div class="side-bar-body-title">Парметры:</div>
 
-        <div class="container">
-
-          <div class="counter">
-            <img src="../assets/sad.svg" alt="">
-
-            <div class="counter-number"> {{ med_1 }} </div>
-          </div>
+      <div class="container">
+        <div class="counter">
+          <img src="../assets/sad.svg" alt="">
+          <div class="counter-number"> {{ med_1 }} </div>
+        </div>
         
-          <div class="counter">
-            <img src="../assets/Happy_icon.svg" alt="">
-
-            <div class="counter-number"> {{ med_2 }} </div>
-          </div>
-
-          <div class="counter">
-            <img src="../assets/heart_icon.svg" alt="">
-
-            <div class="counter-number"> {{ med_3 }} </div>
-          </div>
-
+        <div class="counter">
+          <img src="../assets/Happy_icon.svg" alt="">
+          <div class="counter-number"> {{ med_2 }} </div>
         </div>
 
+        <div class="counter">
+          <img src="../assets/heart_icon.svg" alt="">
+          <div class="counter-number"> {{ med_3 }} </div>
+        </div>
       </div>
+    </div>
 
     <div class="side-bar-bottom">
       <div class="side-bar-bottom-text">Осталось в очереди:</div>
@@ -54,7 +48,6 @@ export default {
   props:['curBuyerId'],
   data() {
     return {
-      // curBuyerId: null,
       curBuyer: null,
     }
   },
@@ -64,10 +57,7 @@ export default {
     },
 
     restart() {
-      // this.ON_START()
-      // this.curBuyerId = 0
       this.$emit('restart')
-      // this.curBuyer = this.buyers[0]
     },
 
     ...mapMutations({
@@ -80,6 +70,7 @@ export default {
     ...mapState('buyers',{
       buyers: state => state.buyers
     }),
+
     ...mapState('sales', {
       med_1: state => state.med_1,
       med_2: state => state.med_2,
@@ -110,23 +101,15 @@ export default {
   }
 }
 
-
 .side-bar {
-  // background: darkolivegreen;
   background: linear-gradient(63.53deg, #2D8550 16.62%, #5E6EC2 83.38%);
   opacity: 0.7;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // height: 100px;
 
   &-top {
-    // position: absolute;
-    // top: 0;
-    // width: 370px;
-    // height: 130px;
-    // background: cornflowerblue;
     display: flex;
     padding: 70px 50px 0;
 
@@ -135,7 +118,6 @@ export default {
       height: 70px;
       border-radius: 50%;
       background: #fff;
-      // margin-right: 38px;
       position: relative;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -183,7 +165,6 @@ export default {
           line-height: 59px;
           display: flex;
           align-items: center;
-          /* text-align: center; */
           color: #424242;
           width: 65px;
           margin-right: 20px;
@@ -196,9 +177,7 @@ export default {
     height: 134px;
     width: 100%;
     background: rgba(250, 250, 250, 0.15);
-    // bottom: 0;
     display: flex;
-    // position: absolute;
     flex-direction: column;
     justify-content: center;
 
@@ -215,5 +194,4 @@ export default {
     }
   }
 }
-
 </style>
