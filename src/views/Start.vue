@@ -37,7 +37,7 @@ export default {
   // overflow: hidden;
   // width: 100%;
   // background: url(../assets/shutterstock_111500834.jpg);
-    background: url(/img/shutterstock_111500834.17786b9e.jpg) no-repeat;
+    background: url(../assets/bg.jpg) no-repeat;
     width: 100%;
     height: 100vh;
 }
