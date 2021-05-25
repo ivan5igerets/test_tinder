@@ -14,7 +14,6 @@ const routes = [
     name: 'Main',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue'),
     beforeEnter: (to, from, next) => {
-      console.log(from);
       if (from.name !== 'Start' && from.name !== 'Final') {
         next({name: 'Start'})
       } else {

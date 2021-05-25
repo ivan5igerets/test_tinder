@@ -24,7 +24,6 @@ export default {
       state.med_1 = 0
       state.med_2 = 0
       state.med_3 = 0
-      console.log('on start');
     }
   },
   actions: {

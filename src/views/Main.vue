@@ -2,7 +2,7 @@
   <div class="page">
     <SideBar v-on:restart="restart" :curBuyerId="curBuyerId" />
 
-    <div class="main-part main-part-width">
+    <div class="main-part main-part-width" v-hammer:swipe="onSwipe">
       <div class="main-part-body">
         <div class="card-size">
           <transition :name="nameOfTransition">
@@ -50,6 +50,18 @@ export default {
   },
 
   methods: {
+    onSwipe(event) {
+      let res = event.deltaX < 0 ? 1 : 3
+      const x = Math.abs(event.deltaX)
+      const y = Math.abs(event.deltaY)
+
+      res = x > y ? res : 2
+      if (res === 2 && event.deltaY > 0) {
+        return
+      }
+      this.next(res)
+    },
+
     next(medicine) {
       this.INCRIMENT(medicine)
       this.chooseTransition(medicine)
