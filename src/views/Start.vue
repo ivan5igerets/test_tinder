@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/shutterstock_111500834.jpg">
+    <!-- <img alt="Vue logo" src="../assets/shutterstock_111500834.jpg"> -->
 
     <div class="circle">
       <div class="text-small">Добро пожаловать в игру</div>
@@ -33,8 +33,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home {
+  // overflow: hidden;
+  // width: 100%;
+  // background: url(../assets/shutterstock_111500834.jpg);
+    background: url(/img/shutterstock_111500834.17786b9e.jpg) no-repeat;
+    width: 100%;
+    height: 100vh;
+}
+
 .circle {
-  position: absolute;
+  // position: absolute;
+  position: fixed;
   top: -30px;
   left: 110px;
   width: 860px;

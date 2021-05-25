@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="isShow">
+  <div class="card card-size" v-if="isShow">
 
     <div v-if="med" class="med" :class="{first: med === 1, second: med === 2, third: med ===3}">
       препарат 1
@@ -9,7 +9,7 @@
       <img :src="buyer.picture" alt="">
     </div>
 
-    <div class="card-info">
+    <div class="card-info card-info-size">
 
       <div class="card-info-name">
         {{ buyer.title }}
@@ -41,8 +41,34 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+// @media screen and (min-width: 801px) {}
 .card {
+
+  @media screen and (min-width: 801px) {
+    &-size {
+      height: 590px;
+      width: 540px;
+    }
+
+    &-info-size {
+      width: 420px;
+      margin: 25px 60px 0;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    &-size {
+      height: 665px;
+      width: 430px;
+    }
+
+    &-info-size {
+      width: 330px;
+      margin: 25px auto 0;
+    }
+  }
 
   .med {
     top: 50%;
@@ -75,8 +101,6 @@ export default {
     color: #FFB903;
   }
 
-  height: 590px;
-  width: 540px;
   // background: gold;
   box-shadow: 0px 0px 40px rgba(127, 127, 127, 0.4);
   border-radius: 48px;
@@ -85,13 +109,15 @@ export default {
 
   &-photo {
     // background: crimson;
+  }
+
+  img {
     width: 100%;
     height: 350px;
+    object-fit: cover;
   }
 
   &-info {
-    width: 420px;
-    margin: 25px 60px 0;
 
     &-name {
       font-family: Avenir Next Cyr;

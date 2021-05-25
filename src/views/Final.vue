@@ -1,7 +1,7 @@
 <template>
   <div class="page">
 
-    <div class="left-part">
+    <div class="left-part adaptive-left">
 
       <div class="header">
         <div @click="goHome" class="small-circle">
@@ -48,7 +48,7 @@
 
     </div>
 
-    <div class="right-part">
+    <div class="right-part adaptive-right">
       <div class="big-img">
         <img src="../assets/big-circle.jpg" alt="">
       </div>
@@ -95,6 +95,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (min-width: 1201px) {
+  .adaptive-left {
+    width: calc(100% - 670px);
+  }
+}
+@media screen and (max-width: 1200px) {
+  .adaptive-left {
+    width: calc(100%);
+  }
+
+  .adaptive-right {
+    display: none;
+    // width: calc(100%);
+  }
+}
+
 .page {
   // background: olivedrab;
   position: relative;
@@ -106,7 +122,6 @@ export default {
 }
 
 .left-part {
-  width: calc(100% - 670px);
   display: flex;
   flex-direction: column;
 

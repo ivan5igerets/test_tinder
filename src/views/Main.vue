@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="left-part">
+    <!-- <div class="left-part">
       <div class="left-part-top">
 
         <div @click="goHome" class="small-circle">
@@ -46,17 +46,22 @@
         <div class="left-part-bottom-text"> {{ curBuyerId + 1}} / {{ buyers.length }} </div>
       </div>
       
-    </div>
+    </div> -->
+    <SideBar v-on:restart="restart" :curBuyerId="curBuyerId" />
 
-    <div class="main-part">
+
+    <div class="main-part main-part-width">
       <div class="main-part-body">
-        <transition :name="nameOfTransition">
-          <Card 
-            v-if="curBuyer"
-            :buyer="curBuyer"
-            :med="medicine"
-          />
-        </transition>
+        <div class="card-size">
+          <transition :name="nameOfTransition">
+            <Card 
+              v-if="curBuyer"
+              :buyer="curBuyer"
+              :med="medicine"
+            />
+          </transition>
+        </div>
+        <!-- <div class="plug" v-if="!curBuyer"></div>  -->
       </div>
 
       <div class="main-part-footer">
@@ -70,11 +75,13 @@
 
 <script>
 import Card from '../components/card'
+import SideBar from '../components/sideBar'
 import {mapState, mapMutations} from 'vuex'
 
 export default {
   components: {
-    Card
+    Card,
+    SideBar
   },
 
   data() {
@@ -97,17 +104,17 @@ export default {
     next(medicine) {
       this.INCRIMENT(medicine)
       this.chooseTransition(medicine)
-      this.curBuyerId++
 
       this.medicine = medicine;
       setTimeout(() => {
         this.curBuyer = null
         setTimeout(() => {
           this.medicine = 0
-          if(this.curBuyerId === this.buyers.length) {
+          if(this.curBuyerId === this.buyers.length - 1) {
             this.$router.push({name: 'Final'})
             return
           }
+          this.curBuyerId++
           this.curBuyer = this.buyers[this.curBuyerId]
         }, 500)
       }, 500)
@@ -135,7 +142,6 @@ export default {
       this.ON_START()
       this.curBuyerId = 0
       this.curBuyer = this.buyers[this.curBuyerId]
-      
     },
 
     ...mapMutations({
@@ -185,128 +191,43 @@ export default {
 }
 
 
+.plug {
+  height: 590px;
+  width: 540px;
+  opacity: 1;
+  // background: darkorchid;
+}
+
 .page {
   width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
+  // background: cornflowerblue;
 }
 
-.left-part {
-  width: 470px;
-  height: 100%;
-  background: linear-gradient(63.53deg, #2D8550 16.62%, #5E6EC2 83.38%);
-  opacity: 0.7;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  &-top {
-    // position: absolute;
-    // top: 0;
-    width: 370px;
-    height: 130px;
-    // background: cornflowerblue;
-    display: flex;
-    padding: 70px 50px 0;
-
-    .small-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #fff;
-      margin-right: 38px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-
-      &:hover {
-        box-shadow: 0 0 10px rgba(241, 168, 168, 0.5);
-      }
-
-      .icon-retry {
-        position: absolute;
-        top: -63px;
-        left: -68px;
-      }
-    }
-  }
-
-  &-body {
-    // height: 200px;
-    // background: olivedrab;
-
-    &-title {
-      font-family: Avenir Next Cyr;
-      font-size: 36px;
-      line-height: 44px;
-      color: #FFFFFF;
-      margin-bottom: 30px;
-    }
-
-    .container {
-
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-
-      .counter {
-        width: 180px;
-        height: 60px;
-        background: #fff;
-        border-radius: 40px;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        margin-bottom: 40px;
-
-        &-number {
-          font-family: Avenir Next Cyr;
-          font-size: 48px;
-          line-height: 59px;
-          display: flex;
-          align-items: center;
-          /* text-align: center; */
-          color: #424242;
-          width: 65px;
-          margin-right: 20px;
-        }
-      }
-    }
-  }
-
-  &-bottom {
-    height: 134px;
-    width: 100%;
-    background: rgba(250, 250, 250, 0.15);
-    // bottom: 0;
-    display: flex;
-    // position: absolute;
-    flex-direction: column;
-    justify-content: center;
-
-    &-text {
-      font-family: Avenir Next Cyr;
-      font-size: 36px;
-      line-height: 44px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      letter-spacing: 0.02em;
-      color: #FFFFFF;
-      justify-content: center;
-    }
-  }
-}
 
 .main-part {
+  @media screen and (min-width: 1101px) {
+    &-width {
+      width: calc(100% - 470px);
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    &-width {
+      width: calc(100% - 280px);
+      margin: 15px auto;
+    }
+  }
   // background: forestgreen;
-  width: calc(100% - 470px);
+  // margin-left: 470px;
+  // width: calc(100% - 470px);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  // overflow: hidden;
 
   &-body {
     display: flex;
@@ -314,8 +235,9 @@ export default {
   }
 
   &-footer {
-    height: 160px;
+    // height: 160px;
     // background: lightcoral;
+    margin-bottom: 55px;
 
     .medicine {
       width: 280px;
